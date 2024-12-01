@@ -74,8 +74,10 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn' => 'firebird:dbname=C:\eStream\SQLAccounting\DB\ACC-0007.FDB',
-	'hostname' => '',
+	// 'dsn' => 'firebird:dbname=C:\eStream\SQLAccounting\DB\ACC-0007.FDB',
+	// 'hostname' => '',
+	'dsn' => '',
+	'hostname' => 'firebird:dbname=26.124.202.177:\\eStream\\SQLAccounting\\DB\\ACC-0007.FDB',
 	'username' => 'sysdba',
 	'password' => 'masterkey',
 	'database' => '',
