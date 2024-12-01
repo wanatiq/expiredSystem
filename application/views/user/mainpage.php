@@ -26,7 +26,7 @@
 <div class="container py-4">
     <!-- Page Header -->
     <div class="mb-4 text-center">
-        <h3>NADICOM DIGITAL SDN BHD</h3>
+        <h3>NADICOM DIGITAL SDN </h3>
         <h4>EXPIRED SUPPORT SYSTEM</h4>
     </div>
 
