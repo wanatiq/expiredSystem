@@ -466,6 +466,11 @@ $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array();
 
+$config['google_client_id'] = getenv('GOOGLE_CLIENT_ID');
+$config['google_client_secret'] = getenv('GOOGLE_CLIENT_SECRET');
+$config['google_redirect_uri'] = (ENVIRONMENT === 'development') ? 'http://localhost/expiredSystem/login/google_auth' : 'https://nadicom.my/expiredSystem/login/google_auth';
+
+
 /*
 |--------------------------------------------------------------------------
 | Output Compression

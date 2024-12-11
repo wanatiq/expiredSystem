@@ -74,10 +74,10 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	// 'dsn' => 'firebird:dbname=C:\eStream\SQLAccounting\DB\ACC-0007.FDB',
+	// 'dsn' => 'firebird:dbname=C:\eStream\SQLAccounting\DB\ACC-0008.FDB',
 	// 'hostname' => '',
 	'dsn' => '',
-	'hostname' => 'firebird:dbname=26.124.202.177:\\eStream\\SQLAccounting\\DB\\ACC-0007.FDB',
+	'hostname' => 'firebird:dbname=26.163.209.187:E:\\eStream\\SQLAccounting\\DB\\ACC-0044.FDB',
 	'username' => 'sysdba',
 	'password' => 'masterkey',
 	'database' => '',
@@ -96,25 +96,3 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
   );
-
-//   $db['default'] = array(
-// 	'dsn' => 'mysql:host=localhost; dbname=expired_system; charset=utf8;',
-// 	'hostname' => '',
-// 	'username' => 'root',
-// 	'password' => '',
-// 	'database' => '',
-// 	'dbdriver' => 'pdo',
-// 	'dbprefix' => '',
-// 	'pconnect' => FALSE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => FALSE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-//   );

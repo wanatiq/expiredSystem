@@ -9,11 +9,16 @@ class Control_comp extends CI_Controller {
     public function __construct(){
         parent::__construct();
 
+        // if (!$this->session->userdata('user_id')) {
+        //     redirect('auth/login');
+        // }
+
         $this->load->database();
         $this->load->helper('url');   
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->model('Model_comp');
+        
     }
 
     public function index() {
@@ -143,5 +148,3 @@ class Control_comp extends CI_Controller {
     //     $data1 = $this->Model_comp->get_sliv();
     //     echo json_encode($data1); 
     // }
-
-
