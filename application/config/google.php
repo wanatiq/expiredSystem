@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['google_client_id'] = getenv('GOOGLE_CLIENT_ID');
 $config['google_client_secret'] = getenv('GOOGLE_CLIENT_SECRET');
-$config['google_redirect_uri'] = (ENVIRONMENT === 'development') 
+$config['google_redirect_uri'] = (ENVIRONMENT === 'production') 
     ? 'http://localhost/expiredSystem/login/google_auth' 
     : 'https://nadicom.my/expiredSystem/login/google_auth';
 
