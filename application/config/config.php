@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $path = "http://" . $_SERVER['HTTP_HOST'] . str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-$config['base_url'] = 'https://nadicom.my';
+$config['base_url'] = 'https://nadicom.my/expiredSystem';
 
 /*
 |--------------------------------------------------------------------------
