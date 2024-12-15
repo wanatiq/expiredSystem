@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-use Google\Client as GoogleClient;
-use Google\Service\Oauth2;
+// use Google\Client as GoogleClient;
+// use Google\Service\Oauth2;
 
 class Login extends CI_Controller {
     public function __construct() {
@@ -18,24 +18,26 @@ class Login extends CI_Controller {
     public function authenticate() {
         // Step 1: Ensure the USERS table exists and is populated
         $this->User_model->ensure_users_table();
-
+    
         // Step 2: Handle login validation
         $username = $this->input->post("USERNAME");
         $password = $this->input->post("PASSWORD");
-
+    
         $user = $this->User_model->validate_user($username, $password);
-
+    
         if ($user) {
             // Set session data
             $this->session->set_userdata("ID", $user->id);
             $this->session->set_userdata("USERNAME", $user->USERNAME);
-
-            redirect(''); // Redirect to index page
+    
+            // Redirect to mainpage
+            redirect('Control_comp');
         } else {
             $this->session->set_flashdata('error', 'Invalid username or password');
             redirect('login');
         }
-    }
+    }        
+    
 
     public function logout() {
         $this->session->sess_destroy();
@@ -93,51 +95,51 @@ class Login extends CI_Controller {
 
 
     // Login with Google
-    public function google_auth() {
-        require_once FCPATH . '../vendor/autoload.php';
+    // public function google_auth() {
+    //     require_once FCPATH . '../vendor/autoload.php';
         
-        $googleClient = new GoogleClient();
-        $googleClient->setClientId($this->config->item('google_client_id'));
-        $googleClient->setClientSecret($this->config->item('google_client_secret'));
-        $googleClient->setRedirectUri($this->config->item('google_redirect_uri'));
-        $googleClient->addScope("email");
-        $googleClient->addScope("profile");
+    //     $googleClient = new GoogleClient();
+    //     $googleClient->setClientId($this->config->item('google_client_id'));
+    //     $googleClient->setClientSecret($this->config->item('google_client_secret'));
+    //     $googleClient->setRedirectUri($this->config->item('google_redirect_uri'));
+    //     $googleClient->addScope("email");
+    //     $googleClient->addScope("profile");
     
-        if ($this->input->get('code')) {
-            $token = $googleClient->fetchAccessTokenWithAuthCode($this->input->get('code'));
+    //     if ($this->input->get('code')) {
+    //         $token = $googleClient->fetchAccessTokenWithAuthCode($this->input->get('code'));
     
-            if (!isset($token['error'])) {
-                $googleClient->setAccessToken($token);
+    //         if (!isset($token['error'])) {
+    //             $googleClient->setAccessToken($token);
     
-                // Get user information from Google
-                $googleOauth = new Oauth2($googleClient);
-                $googleUserInfo = $googleOauth->userinfo->get();
+    //             // Get user information from Google
+    //             $googleOauth = new Oauth2($googleClient);
+    //             $googleUserInfo = $googleOauth->userinfo->get();
     
-                $googleEmail = $googleUserInfo->email;
+    //             $googleEmail = $googleUserInfo->email;
     
-                // Check if email exists in the database
-                if ($this->User_model->email_exists($googleEmail)) {
-                    // Grant access
-                    $user = $this->User_model->get_user_by_email($googleEmail);
+    //             // Check if email exists in the database
+    //             if ($this->User_model->email_exists($googleEmail)) {
+    //                 // Grant access
+    //                 $user = $this->User_model->get_user_by_email($googleEmail);
     
-                    // Set session data
-                    $this->session->set_userdata('ID', $user->ID);
-                    $this->session->set_userdata('EMAIL', $user->EMAIL);
-                    $this->session->set_userdata('USERNAME', $user->USERNAME);
+    //                 // Set session data
+    //                 $this->session->set_userdata('ID', $user->ID);
+    //                 $this->session->set_userdata('EMAIL', $user->EMAIL);
+    //                 $this->session->set_userdata('USERNAME', $user->USERNAME);
     
-                    // Redirect to dashboard
-                    redirect('');
-                } else {
-                    // Deny access with a friendly error message
-                    $this->session->set_flashdata('error', 'You Did Not Have Authorization, Please Contact Administration.');
-                    redirect('login');
-                }
-            } else {
-                $this->session->set_flashdata('error', 'Failed to authenticate with Google.');
-                redirect('login');
-            }
-        } else {
-            redirect($googleClient->createAuthUrl());
-        }
-    }           
+    //                 // Load the mainpage view
+    //                 $this->load->view('mainpage');
+    //             } else {
+    //                 // Deny access with a friendly error message
+    //                 $this->session->set_flashdata('error', 'You Did Not Have Authorization, Please Contact Administration.');
+    //                 redirect('login');
+    //             }
+    //         } else {
+    //             $this->session->set_flashdata('error', 'Failed to authenticate with Google.');
+    //             redirect('login');
+    //         }
+    //     } else {
+    //         redirect($googleClient->createAuthUrl());
+    //     }
+    // }                   
 }

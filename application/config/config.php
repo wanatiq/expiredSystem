@@ -23,8 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $path = "http://" . $_SERVER['HTTP_HOST'] . str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-$config['base_url'] = 'https://nadicom.my/expiredSystem';
+$path = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http") 
+        . "://" . $_SERVER['HTTP_HOST'] 
+        . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/') . '/';
+
+$config['base_url'] = $path;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -466,8 +470,8 @@ $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array();
 
-$config['google_client_id'] = getenv('GOOGLE_CLIENT_ID');
-$config['google_client_secret'] = getenv('GOOGLE_CLIENT_SECRET');
+// $config['google_client_id'] = getenv('GOOGLE_CLIENT_ID');
+// $config['google_client_secret'] = getenv('GOOGLE_CLIENT_SECRET');
 $config['google_redirect_uri'] = (ENVIRONMENT === 'production') ? 'http://localhost/expiredSystem/login/google_auth' : 'https://nadicom.my/expiredSystem/login/google_auth';
 
 

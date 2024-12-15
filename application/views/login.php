@@ -111,11 +111,11 @@
 <body>
     <div class="login-container">
 
-        <?php if ($this->session->flashdata('error')): ?>
+        <!-- <?php if ($this->session->flashdata('error')): ?>
             <div class="alert alert-danger" style="color:red">
                 <?= $this->session->flashdata('error'); ?>
             </div>
-        <?php endif; ?>
+        <?php endif; ?> -->
 
         <!-- Header -->
         <div class="login-header">
@@ -124,16 +124,16 @@
         </div>
 
         <!-- Google Login Button -->
-        <div class="d-grid mb-3">
+        <!-- <div class="d-grid mb-3">
             <a href="<?= base_url('login/google_auth') ?>" class="btn google-login">
                 <i class="fab fa-google"></i> Sign in with Google
             </a>
-        </div>
+        </div> -->
 
         <!-- Separator -->
-        <div class="text-center my-3">
+        <!-- <div class="text-center my-3">
             <span>OR</span>
-        </div>
+        </div> -->
 
         <!-- Manual Login Form -->
         <form method="post" action="<?php echo site_url('login/authenticate'); ?>">
