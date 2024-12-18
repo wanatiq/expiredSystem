@@ -140,11 +140,11 @@
                     <i class="fas fa-unlock-alt"></i> Forgot your password?
                 </a>
             </p>
-            <p>
+            <!-- <p>
                 <a href="<?= site_url('createuser') ?>">
                     <i class="fas fa-user-alt"></i> Create new user
                 </a>
-            </p>
+            </p> -->
             <!-- Optional: Admin-only action link -->
             <!-- <p class="text-center">
                 <a href="<?= site_url('login/alter_database') ?>" class="btn btn-danger">
