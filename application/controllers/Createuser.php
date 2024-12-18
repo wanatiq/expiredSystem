@@ -16,18 +16,25 @@ class Createuser extends CI_Controller {
     public function store_user() {
         // Get the user input
         $username = $this->input->post('USERNAME');
+        $company_name = $this->input->post('COMPANYNAME');
         $password = $this->input->post('PASSWORD');
         $email = $this->input->post('EMAIL');
+
+        // Check if email is empty and set it to NULL
+        $email = empty($email) ? NULL : $email;
 
         // Hash the password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Prepare user data
         $user_data = [
+            'USER_ROLE' => 'users',
             'USERNAME' => $username,
+            'COMPANYNAME' => $company_name,
             'PASSWORD' => $hashed_password,
             'EMAIL' => $email,
             'CREATED_AT' => date('Y-m-d H:i:s')
+            
         ];
 
         // Save the user to the database

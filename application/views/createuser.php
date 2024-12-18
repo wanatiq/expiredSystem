@@ -6,7 +6,6 @@
     <title>Create User</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/artemis-assets/images/shuffle-for-bootstrap.png">
 
@@ -82,13 +81,18 @@
             </div>
 
             <div class="mb-4">
+                <label for="COMPANYNAME" class="form-label">Company Name</label>
+                <input type="text" class="form-control" id="COMPANYNAME" name="COMPANYNAME" placeholder="Enter company name" required>
+            </div>
+
+            <div class="mb-4">
                 <label for="PASSWORD" class="form-label">Password</label>
                 <input type="password" class="form-control" id="PASSWORD" name="PASSWORD" placeholder="Enter password" required>
             </div>
 
             <div class="mb-4">
                 <label for="EMAIL" class="form-label">Email</label>
-                <input type="email" class="form-control" id="EMAIL" name="EMAIL" placeholder="Enter email" required>
+                <input type="email" class="form-control" id="EMAIL" name="EMAIL" placeholder="Enter email">
             </div>
 
             <div class="d-grid">

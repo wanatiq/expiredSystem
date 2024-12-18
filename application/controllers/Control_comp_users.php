@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @property Model_comp $Model_comp
+ * @property Model_comp_users $Model_comp_users
  */
 
  
-class Control_comp extends CI_Controller {
+class Control_comp_users extends CI_Controller {
     public function __construct(){
         parent::__construct();
 
@@ -17,11 +17,11 @@ class Control_comp extends CI_Controller {
         $this->load->helper('url');   
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->model('Model_comp'); 
+        $this->load->model('Model_comp_users'); 
     }
 
     public function index() {
-        $data1 = $this->Model_comp->get_combined_data(); // Ambil data dari model
+        $data1 = $this->Model_comp_users->get_combined_data(); // Ambil data dari model
         $today = new DateTime();
 
         foreach ($data1 as $key => $record) {
@@ -79,6 +79,6 @@ class Control_comp extends CI_Controller {
 
         // Kirimkan data ke view
         $data['combined'] = $data1;
-        $this->load->view('user/mainpage', $data);
+        $this->load->view('user/mainpage_users', $data);
     }
 }

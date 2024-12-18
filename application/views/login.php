@@ -6,14 +6,17 @@
     <title>Login</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/artemis-assets/images/shuffle-for-bootstrap.png">
 
     <!-- Custom CSS -->
     <style>
         body {
-            background-color: #f8f9fc;
+            background-image: url('https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmluYW5jaWFsJTIwZGlzdHJpY3R8ZW58MHx8MHx8fDA%3D');
+            background-size: cover;       /* Ensure the image covers the entire page */
+            background-position: center;  /* Center the image */
+            background-attachment: fixed; /* Keep the image fixed during scrolling */
+            background-repeat: no-repeat; /* Prevent image repetition */
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -33,11 +36,11 @@
         .login-header {
             text-align: center;
             margin-bottom: 1.5rem;
-            color: #343a40;
+            color:rgb(6, 6, 6);
         }
-        .login-header h1 {
+        .login-header h2 {
             font-size: 2rem;
-            font-weight: bold;
+            font-weight: bold; 
         }
         .login-header p {
             font-size: 1rem;
@@ -68,22 +71,12 @@
         .btn-primary:hover {
             background-color: #007e33;
         }
-        .google-login {
-            background-color: #4285F4;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.3rem;
-            padding: 0.6rem 1.2rem;
-            color: #fff;
-            margin-bottom: 2rem; /* Increased spacing below Google Login button */
-        }
+        
         .text-center.my-3{
             margin-top: 2rem;
             margin-bottom: 2rem;
         }
-        .google-login:hover {
-            background-color: #357ae8;
-        }
+        
         .alert {
             font-size: 1rem;
             border-radius: 10px;
@@ -111,29 +104,15 @@
 <body>
     <div class="login-container">
 
-        <!-- <?php if ($this->session->flashdata('error')): ?>
-            <div class="alert alert-danger" style="color:red">
-                <?= $this->session->flashdata('error'); ?>
-            </div>
-        <?php endif; ?> -->
+        <div class="image-header">
+            <img src="<?= base_url('assets/artemis-assets/logos/NDSB.jpeg') ?>" alt="nadicom.jpg" width="50%" height="50%">
+        </div>
 
         <!-- Header -->
         <div class="login-header">
-            <h1><i class="fas fa-user-circle"></i> Welcome Back!</h1>
+            <h2>NADICOM DIGITAL SDN BHD</h2>
             <p>Please log in to access your account</p>
         </div>
-
-        <!-- Google Login Button -->
-        <!-- <div class="d-grid mb-3">
-            <a href="<?= base_url('login/google_auth') ?>" class="btn google-login">
-                <i class="fab fa-google"></i> Sign in with Google
-            </a>
-        </div> -->
-
-        <!-- Separator -->
-        <!-- <div class="text-center my-3">
-            <span>OR</span>
-        </div> -->
 
         <!-- Manual Login Form -->
         <form method="post" action="<?php echo site_url('login/authenticate'); ?>">
@@ -161,9 +140,15 @@
                     <i class="fas fa-unlock-alt"></i> Forgot your password?
                 </a>
             </p>
-            <!-- <p>
+            <p>
                 <a href="<?= site_url('createuser') ?>">
                     <i class="fas fa-user-alt"></i> Create new user
+                </a>
+            </p>
+            <!-- Optional: Admin-only action link -->
+            <!-- <p class="text-center">
+                <a href="<?= site_url('login/alter_database') ?>" class="btn btn-danger">
+                    <i class="fas fa-database"></i> Alter Database
                 </a>
             </p> -->
         </div>
