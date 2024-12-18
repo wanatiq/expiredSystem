@@ -85,18 +85,20 @@ class Login extends CI_Controller {
             $email_query = $this->db->get('USERS');
     
             // Handle errors
-            if ($username_query->num_rows() === 0 && $email_query->num_rows() === 0) {
-                $this->session->set_flashdata('error', 'Invalid username and email.');
-                redirect('login/forgot_password');
-            } elseif ($username_query->num_rows() === 0) {
+            // if ($username_query->num_rows() === 0 || $email_query->num_rows() === 0) {
+            //     $this->session->set_flashdata('error', 'Invalid username and email.');
+            //     redirect('login/forgot_password');
+            // } 
+            if ($username_query->num_rows() === 0) {
                 $this->session->set_flashdata('error', 'Invalid username.');
                 $this->session->set_flashdata('username_error', true);
                 redirect('login/forgot_password');
-            } elseif ($email_query->num_rows() === 0) {
-                $this->session->set_flashdata('error', 'Invalid email.');
-                $this->session->set_flashdata('email_error', true);
-                redirect('login/forgot_password');
-            }
+            } 
+            // elseif ($email_query->num_rows() === 0) {
+            //     $this->session->set_flashdata('error', 'Invalid email.');
+            //     $this->session->set_flashdata('email_error', true);
+            //     redirect('login/forgot_password');
+            // }
 
             // Update the user's password
             if ($this->User_model->reset_password($username, $password)) {
