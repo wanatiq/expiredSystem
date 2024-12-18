@@ -8,30 +8,39 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/artemis-assets/images/shuffle-for-bootstrap.png">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
     <style>
         body {
             background-image: url('https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmluYW5jaWFsJTIwZGlzdHJpY3R8ZW58MHx8MHx8fDA%3D');
-            background-size: cover;       /* Ensure the image covers the entire page */
-            background-position: center;  /* Center the image */
-            background-attachment: fixed; /* Keep the image fixed during scrolling */
-            background-repeat: no-repeat; /* Prevent image repetition */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
         }
         .login-container {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+            box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3), /* Main deep shadow */
+                        0px 4px 6px rgba(0, 0, 0, 0.2);  /* Secondary subtle shadow */
             width: 100%;
             max-width: 400px;
             text-align: center;
+            transition: box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+        .login-container:hover {
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.4), /* Slightly deeper on hover */
+                        0px 6px 8px rgba(0, 0, 0, 0.3);
+            transform: translateY(-1px); /* Adds a slight "lift" effect */
         }
         .login-header {
             text-align: center;
@@ -40,63 +49,82 @@
         }
         .login-header h2 {
             font-size: 2rem;
-            font-weight: bold; 
+            font-weight: bold;
+            color: #000;
         }
-        .login-header p {
+
+        .form-group {
+            display: flex;
+            flex-direction: column; /* Ensure label and input are stacked */
+            align-items: flex-start; /* Align both to the left */
+            margin-bottom: 1rem; /* Add spacing between fields */
+        }
+
+        .form-label {
             font-size: 1rem;
-            color: #6c757d;
+            font-weight: bold;
+            margin-bottom: 0.5rem; /* Space between label and input */
+            color: #333; /* Optional: Customize label color */
         }
+
         .form-control {
-            border-radius: 25px;
+            width: 100%; /* Ensure the input fills the container */
+            border-radius: 8px;
             border: 1px solid #dee2e6;
-            font-size: 1.1rem;
-            padding: 0.8rem;
-            text-align: center;
+            font-size: 1rem;
+            padding: 0.6rem;
         }
-        .form-control::placeholder{
-            text-align: center;
-        }
+
         .form-control:focus {
-            box-shadow: none;
-            border-color: #00c851;
+            border-color: #00c851; /* Highlight input on focus */
+            box-shadow: none; /* Remove shadow */
         }
+
         .btn-primary {
-            background-color: #00c851;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #003366; /* Deep navy blue */
             border: none;
             border-radius: 25px;
-            font-size: 1.3rem;
-            padding: 0.6rem 1.2rem;
-            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff; /* White text for contrast */
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
         }
+
+        .btn-primary i {
+            margin-right: 0.5rem; /* Space between icon and text */
+            font-size: 1.5rem; /* Icon size */
+        }
+
         .btn-primary:hover {
-            background-color: #007e33;
+            background-color: #ff7b00; /* Orange tone from logo */
+            transform: translateY(-3px);
         }
-        
-        .text-center.my-3{
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .alert {
-            font-size: 1rem;
-            border-radius: 10px;
-        }
-        .login-footer {
+
+        .powered-by {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.6rem;
+            color: #003366; /* Navy blue text for consistency */
+            font-weight: bold;
             text-align: center;
-            margin-top: 1.5rem;
         }
+
+        .powered-by span {
+            color: #ff7b00; /* Highlight 'Nadicom Digital' in orange */
+        }
+
         .login-footer a {
             color: #007bff;
             text-decoration: none;
             font-size: 1.1rem;
         }
+
         .login-footer a:hover {
             text-decoration: underline;
-        }
-
-        .alert-danger {
-            font-size: 1.1rem;
-            font-weight: bold;
         }
 
     </style>
@@ -105,30 +133,29 @@
     <div class="login-container">
 
         <div class="image-header">
-            <img src="<?= base_url('assets/artemis-assets/logos/NDSB.jpeg') ?>" alt="nadicom.jpg" width="50%" height="50%">
+            <img src="<?= base_url('assets/artemis-assets/logos/NDSB-removebg-preview.png') ?>" alt="nadicom.jpg" width="75%" height="75%">
         </div>
 
         <!-- Header -->
         <div class="login-header">
-            <h2>NADICOM DIGITAL SDN BHD</h2>
-            <p>Please log in to access your account</p>
+            <!-- <h2>NADICOM DIGITAL SDN BHD</h2> -->
         </div>
 
         <!-- Manual Login Form -->
         <form method="post" action="<?php echo site_url('login/authenticate'); ?>">
-            <div class="mb-4">
+            <div class="form-group">
                 <label for="USERNAME" class="form-label">Username</label>
-                <input type="text" class="form-control" id="USERNAME" name="USERNAME" placeholder="Enter your username" required>
+                <input type="text" class="form-control" id="USERNAME" name="USERNAME" placeholder="Username" required>
             </div>
 
-            <div class="mb-4">
+            <div class="form-group">
                 <label for="PASSWORD" class="form-label">Password</label>
-                <input type="password" class="form-control" id="PASSWORD" name="PASSWORD" placeholder="Enter your password" required>
+                <input type="password" class="form-control" id="PASSWORD" name="PASSWORD" placeholder="Password" required>
             </div>
 
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-sign-in-alt"></i> Login
+                    <i class="fas fa-arrow-right-to-bracket"></i> Login
                 </button>
             </div>
         </form>
@@ -140,6 +167,10 @@
                     <i class="fas fa-unlock-alt"></i> Forgot your password?
                 </a>
             </p>
+            <br>
+        </div>
+        <div class="powered-by mt-4">
+            Powered by <span>Nadicom Digital Sdn Bhd</span>
             <!-- <p>
                 <a href="<?= site_url('createuser') ?>">
                     <i class="fas fa-user-alt"></i> Create new user
