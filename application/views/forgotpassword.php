@@ -12,28 +12,40 @@
     <!-- Custom CSS -->
     <style>
         body {
-            background-color: #f8f9fc; /* Soft light gray */
+            background-image: url('https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZmluYW5jaWFsJTIwZGlzdHJpY3R8ZW58MHx8MHx8fDA%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
         }
 
         .forgot-password-container {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
             padding: 2.5rem; /* Slightly reduced padding */
             border-radius: 15px; /* Reduced border radius */
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3), /* Main deep shadow */
+                        0px 4px 6px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 400px; /* Reduced container width */
             text-align: center;
+            transition: box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+
+        .forgot-password-container:hover{
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.4), /* Slightly deeper on hover */
+                        0px 6px 8px rgba(0, 0, 0, 0.3);
+            transform: translateY(-px); /* Adds a slight "lift" effect */
         }
 
         .forgot-password-header {
             text-align: center;
-            margin-bottom: 1.5rem; /* Reduced spacing below header */
             color: #343a40;
         }
 
@@ -42,54 +54,61 @@
             font-weight: bold;
         }
 
-        .forgot-password-header p {
-            font-size: 1rem; /* Slightly smaller subheading text */
-            color: #6c757d;
+        .form-group {
+            position: relative;
+            margin-bottom: 1rem; /* Add spacing between fields */
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 15px; 
+            top: 50%;
+            transform: translateY(-100%);
+            font-size: 1rem;
+            color: #000; 
         }
 
         .form-control {
-            border-radius: 20px; /* Slightly less rounded input fields */
+            border-radius: 8px;
             border: 1px solid #dee2e6;
-            font-size: 1.2rem; /* Slightly smaller text size */
-            padding: 0.8rem; /* Reduced padding */
+            font-size: 1rem; /* Slightly smaller text size */
+            padding: 0.6rem 0.6rem 0.6rem 2.5rem; 
             text-align: left; /* Align text and placeholder to the left */
             margin-bottom: 1rem; /* Slightly less spacing between inputs */
             width: 100%;
-        }
-
-        .form-control::placeholder {
-            text-align: left; /* Align the placeholder text to the left */
-            color: #6c757d; /* Optional: Lighter placeholder color */
-            font-size: 1.1rem; /* Slightly smaller placeholder text */
+            box-sizing: border-box;
+            height: 40px;
         }
 
         .form-control:focus {
-            box-shadow: none;
+            outline: none; /* Remove shadow */
             border-color: #00c851; /* Highlight the field with green when focused */
         }
 
         .btn-primary {
-            background-color: #00c851;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background-color: #003366; /* Deep navy blue */
             border: none;
-            border-radius: 20px;
-            font-size: 1.2rem; /* Slightly smaller button text */
-            padding: 0.6rem 1.2rem; /* Reduced button padding */
-            margin-top: 1.5rem; /* Slightly reduced spacing above the button */
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff; /* White text for contrast */
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         .btn-primary:hover {
-            background-color: #007e33;
+            background-color: #ff7b00; /* Orange tone from logo */
+            transform: translateY(-3px);
         }
 
         .alert {
             font-size: 1.1rem; /* Slightly smaller alert text */
             border-radius: 10px;
-        }
-
-        .form-label {
-            font-size: 1.1rem; /* Reduced label size */
-            font-weight: bold; /* Bold labels for better visibility */
-            color: #343a40;
         }
 
         .is-invalid {
@@ -108,39 +127,39 @@
 
         <!-- Forgot Password Form -->
         <form method="post" action="<?php echo site_url('login/forgot_password'); ?>">
-            <div>
-                <label for="USERNAME" class="form-label">Username</label>
+            <div class="form-group">
+                <i class="fas fa-user"></i>
                 <input type="text" 
                     class="form-control <?= $this->session->flashdata('username_error') ? 'is-invalid' : '' ?>" 
                     id="USERNAME" 
                     name="USERNAME" 
-                    placeholder="Enter your username" 
+                    placeholder="Username" 
                     required>
             </div>
-            <div>
-                <label for="EMAIL" class="form-label">Email</label>
+            <div class="form-group">
+                <i class="fas fa-envelope"></i>
                 <input type="email" 
                     class="form-control <?= $this->session->flashdata('email_error') ? 'is-invalid' : '' ?>" 
                     id="EMAIL" 
                     name="EMAIL" 
-                    placeholder="Enter your email">
+                    placeholder="Email">
             </div>
-            <div>
-                <label for="PASSWORD" class="form-label">New Password</label>
+            <div class="form-group">
+                <i class="fas fa-key"></i>
                 <input type="password" 
                     class="form-control" 
                     id="PASSWORD" 
                     name="PASSWORD" 
-                    placeholder="Enter new password" 
+                    placeholder="Password" 
                     required>
             </div>
-            <div>
-                <label for="CONFIRM_PASSWORD" class="form-label">Confirm Password</label>
+            <div class="form-group">
+                <i class="fas fa-key"></i>
                 <input type="password" 
                     class="form-control" 
                     id="CONFIRM_PASSWORD" 
                     name="CONFIRM_PASSWORD" 
-                    placeholder="Confirm new password" required>
+                    placeholder="Confirm password" required>
             </div>
             
             <!-- Flashdata Error Message -->

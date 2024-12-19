@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>assets/artemis-assets/images/shuffle-for-bootstrap.png">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
     <!-- Custom CSS -->
     <style>
@@ -40,31 +42,24 @@
         .login-container:hover {
             box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.4), /* Slightly deeper on hover */
                         0px 6px 8px rgba(0, 0, 0, 0.3);
-            transform: translateY(-1px); /* Adds a slight "lift" effect */
+            transform: translateY(-px); /* Adds a slight "lift" effect */
         }
-        .login-header {
-            text-align: center;
+        .image-header {
             margin-bottom: 1.5rem;
-            color:rgb(6, 6, 6);
-        }
-        .login-header h2 {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #000;
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column; /* Ensure label and input are stacked */
-            align-items: flex-start; /* Align both to the left */
-            margin-bottom: 1rem; /* Add spacing between fields */
+            position: relative;
+            margin-bottom: 1.5rem; /* Add spacing between fields */
         }
 
-        .form-label {
+        .form-group i {
+            position: absolute;
+            left: 15px; 
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 1rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem; /* Space between label and input */
-            color: #333; /* Optional: Customize label color */
+            color: #000; 
         }
 
         .form-control {
@@ -72,18 +67,21 @@
             border-radius: 8px;
             border: 1px solid #dee2e6;
             font-size: 1rem;
-            padding: 0.6rem;
+            padding: 0.6rem 0.6rem 0.6rem 2.5rem;
+            box-sizing: border-box;
+            height: 40px;
         }
 
         .form-control:focus {
             border-color: #00c851; /* Highlight input on focus */
-            box-shadow: none; /* Remove shadow */
+            outline: none; /* Remove shadow */
         }
 
         .btn-primary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            color: white;
             background-color: #003366; /* Deep navy blue */
             border: none;
             border-radius: 25px;
@@ -93,11 +91,6 @@
             padding: 0.8rem 1.5rem;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
-        }
-
-        .btn-primary i {
-            margin-right: 0.5rem; /* Space between icon and text */
-            font-size: 1.5rem; /* Icon size */
         }
 
         .btn-primary:hover {
@@ -118,7 +111,7 @@
         }
 
         .login-footer a {
-            color: #007bff;
+            color:rgb(4, 32, 62);
             text-decoration: none;
             font-size: 1.1rem;
         }
@@ -126,6 +119,7 @@
         .login-footer a:hover {
             text-decoration: underline;
         }
+
 
     </style>
 </head>
@@ -138,27 +132,25 @@
 
         <!-- Header -->
         <div class="login-header">
-            <!-- <h2>NADICOM DIGITAL SDN BHD</h2> -->
+            
         </div>
 
         <!-- Manual Login Form -->
         <form method="post" action="<?php echo site_url('login/authenticate'); ?>">
+            <!-- Username -->
             <div class="form-group">
-                <label for="USERNAME" class="form-label">Username</label>
-                <input type="text" class="form-control" id="USERNAME" name="USERNAME" placeholder="Username" required>
+                <i class="fas fa-user"></i>
+                <input type="text" id="USERNAME" name="USERNAME" class="form-control" placeholder="Username" required>
             </div>
-
+            <!-- Password -->
             <div class="form-group">
-                <label for="PASSWORD" class="form-label">Password</label>
-                <input type="password" class="form-control" id="PASSWORD" name="PASSWORD" placeholder="Password" required>
+                <i class="fas fa-key"></i>
+                <input type="password" id="PASSWORD" name="PASSWORD" class="form-control" placeholder="Password" required>
             </div>
-
-            <div class="d-grid">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-arrow-right-to-bracket"></i> Login
-                </button>
-            </div>
+            <!-- Login Button -->
+            <button type="submit" class="btn-primary">Login</button>
         </form>
+
 
         <!-- Footer Links -->
         <div class="login-footer">
