@@ -73,7 +73,7 @@
         }
 
         .form-control:focus {
-            border-color: #00c851; /* Highlight input on focus */
+            border-color: #003366; /* Highlight input on focus */
             outline: none; /* Remove shadow */
         }
 
@@ -113,7 +113,7 @@
         .login-footer a {
             color:rgb(4, 32, 62);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
         }
 
         .login-footer a:hover {

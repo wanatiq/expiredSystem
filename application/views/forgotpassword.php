@@ -82,7 +82,7 @@
 
         .form-control:focus {
             outline: none; /* Remove shadow */
-            border-color: #00c851; /* Highlight the field with green when focused */
+            border-color: #003366; /* Highlight the field with green when focused */
         }
 
         .btn-primary {
